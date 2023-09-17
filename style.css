@@ -54,6 +54,12 @@ img {
 	max-width:100%; /* Ajustar imagen al ancho de la pantalla */
 	height:auto; /* Mantener proporción */
 }
+.banner {
+    display:block;
+	max-width:100%; /* Ajustar imagen al ancho max de la pantalla */
+	min-width:100%; /* Ajustar imagen al ancho min de la pantalla */
+	height:auto; /* Mantener proporción */
+}
 .new{
   width: 55px;
 }
