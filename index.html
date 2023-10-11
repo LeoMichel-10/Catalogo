@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta charset="UTF-8">
@@ -11,23 +11,13 @@
 <img class="banner" src="./img_baner.jpg" alt="">
 <table class="dirlistertable">
 <thead class="header-1">
-  <tr><td colspan="4"><input type="text" name="buscador" id="buscador" placeholder="Buscar..."></td></tr>
+  <tr><td colspan="4"><input type="text" name="buscador" id="buscador" placeholder="Buscar..."><span id="clear">Borrar</span></td></tr>  
   <tr class="gradient-row">
     <th colspan="2">Juegos PS4</th>
 
     <th colspan="2" class="comprar-celda" id="comprar-th">
       <button id="ver-pedido">Ver pedido</button>
-    </th>
-    
-    <div id="popup" style="display: none; position: fixed; max-width: 550px; max-height: 90%; background: white; padding: 10px; overflow: auto;">
-      <button id="close-popup" style="position: absolute; right: 10px;">X</button>
-      <center><h2>Juegos seleccionados:</h2></center>
-      <ul id="selected-games"></ul>
-      <h3>Peso Aproximado: <span id="total2">0Gb</span></h3>
-      <h3>Total a pagar: <span id="total3">0Mn</span></h3>
-      <h1></h1>
-      <button id="comprar" disabled>Hacer pedido</button>
-    </div>    
+    </th>    
     
   <tr class="colnames"><th><span id="total">0Mn</span></th><th>  #  / Nombre /  Iconos <input type="checkbox" id="btn-switch"><label for="btn-switch" class="lbl-switch"></label></th><th>Tamaño (Gb)</th><th>Costo (Mn)</th></tr>
 </thead>
@@ -387,8 +377,18 @@
 
 <!-- COMENTARIO -->
 
+<div id="popup" style="display: none; position: fixed; max-width: 550px; max-height: 90%; background: white; padding: 10px; overflow: auto;">
+  <button id="close-popup" style="position: absolute; right: 10px;">X</button>
+  <center><h2>Juegos seleccionados:</h2></center>
+  <ul id="selected-games"></ul>
+  <h3>Peso Aproximado: <span id="total2">0Gb</span></h3>
+  <h3>Total a pagar: <span id="total3">0Mn</span></h3>
+  <h1></h1>
+  <button id="comprar" disabled>Hacer pedido</button>
+</div>
+
 <thead class="header-2">
-      <tr><th colspan="4">Catálogo actualizado el 08/10/2023<br /></th></tr>
+      <tr><th colspan="4">Catálogo actualizado el 11/10/2023<br /></th></tr>
       <tr><th colspan="4">Dirección: Calle E # 12 / Cupey y 3ra. Rpto Agramonte.<br /></th></tr>
       <tr><th colspan="4"><img class="full-width" src="./img_ubicacion.jpg" alt=""><br /></th></tr>
       <tr><th colspan="4">Contáctenos al:<br /></th></tr>
