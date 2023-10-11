@@ -1,7 +1,18 @@
 // Buscador
 const buscador = document.querySelector('#buscador');
+const clear = document.querySelector('#clear'); // Seleccionar el elemento #clear
 buscador.addEventListener('keyup', function() {
   const busqueda = this.value.toLowerCase();
+  if (busqueda) { // Si hay algo escrito en el buscador
+    clear.style.display = 'block'; // Mostrar la x
+    clear.addEventListener('click', function() { // Añadir un evento al hacer clic en la x
+      buscador.value = ''; // Borrar el contenido del buscador
+      clear.style.display = 'none'; // Ocultar la x
+      buscador.dispatchEvent(new KeyboardEvent('keyup')); // Simular una pulsación de tecla para actualizar los resultados
+    });
+  } else { // Si no hay nada escrito en el buscador
+    clear.style.display = 'none'; // Ocultar la x
+  }
   const filas = document.querySelectorAll('.dirlistertable tr.d');
   let juegosNuevos = [];
   let otrosJuegos = [];
@@ -26,12 +37,12 @@ buscador.addEventListener('keyup', function() {
   juegosNuevos.sort((a, b) => a.querySelector('td:nth-child(2)').textContent.localeCompare(b.querySelector('td:nth-child(2)').textContent));
   otrosJuegos.sort((a, b) => a.querySelector('td:nth-child(2)').textContent.localeCompare(b.querySelector('td:nth-child(2)').textContent));
   filas.forEach(fila => fila.style.display = 'none');
-  juegosNuevos.forEach(fila => fila.style.display = '');
-  otrosJuegos.forEach(fila => fila.style.display = '');
+  juegosNuevos.concat(otrosJuegos).forEach(fila => fila.style.display = '');
   const tbody = document.querySelector('.dirlistertable tbody');
   juegosNuevos.concat(otrosJuegos).forEach(fila => tbody.appendChild(fila));
   enumerarJuegos();
 });
+
 
 function ordenarYEnumerarJuegos() {
   const filas = document.querySelectorAll('.dirlistertable tr.d');
@@ -342,3 +353,41 @@ window.addEventListener('load', function() {
   viewOrderButton.disabled = true;
   comprar.disabled = true;
 });
+
+
+
+
+function sortTable() {
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("tablajuegos");
+  switching = true;
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[0];
+      y = rows[i + 1].getElementsByTagName("TD")[0];
+      //check if the two rows should switch place:
+      if (Number(x.innerHTML) > Number(y.innerHTML)) {
+        //if so, mark as a switch and break the loop:
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
