@@ -50,7 +50,7 @@ table.dirlistertable th {
 }
 #buscador {
     box-sizing: border-box;
-    width: 98%;
+    width: 92%;
     background-color: transparent;
     font-size: 1.17em;
 	color:white; /* Cambiar color de texto */
@@ -61,6 +61,28 @@ table.dirlistertable th {
     background-size: 25px;
     background-position: center left 5px;
 }
+#clear {
+    display: none; /* Ocultar la x por defecto */
+    position: absolute; /* Posicionar la x de forma absoluta */
+    right: 15px; /* Alinear la x a la derecha */
+    top: 50%; /* Centrar la x verticalmente */
+    transform: translateY(-50%); /* Ajustar la posición de la x */
+    color: white; /* Cambiar el color de la x */
+    font-weight: bold; /* Hacer la x más gruesa */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre la x */
+    background-color: red; /* Cambiar el color de fondo de la x */
+    border-radius: 50%; /* Hacer que la x tenga una forma circular */
+    padding: 5px;
+    animation: blink 1s infinite; /* Aplicar una animación llamada blink que dura un segundo y se repite indefinidamente */
+}
+
+@keyframes blink {
+    0% { opacity: 0.8; } /* La opacidad es 0.8 al principio */
+    50% { opacity: 1; } /* La opacidad es 1 a la mitad */
+    100% { opacity: 0.8; } /* La opacidad vuelve a ser 0.8 al final */
+}
+  
+  
 table.dirlistertable thead.header-1 th {
     background-color: #18CCDD;
 }
@@ -292,3 +314,4 @@ left: 28px;
     background-color: #00336C;
     color: white;
 }
+  
