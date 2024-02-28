@@ -2,30 +2,32 @@
 const buscador = document.querySelector('#buscador');
 const clear = document.querySelector('#clear'); // Seleccionar el elemento #clear
 buscador.addEventListener('keyup', function() {
-  const busqueda = this.value.toLowerCase();
-  if (busqueda) { // Si hay algo escrito en el buscador
-    clear.style.display = 'block'; // Mostrar la x
-    clear.addEventListener('click', function() { // Añadir un evento al hacer clic en la x
-      buscador.value = ''; // Borrar el contenido del buscador
-      clear.style.display = 'none'; // Ocultar la x
-      buscador.dispatchEvent(new KeyboardEvent('keyup')); // Simular una pulsación de tecla para actualizar los resultados
+  const busqueda = this.value.toLowerCase().replace(/\[.*?\]/g, '').trim();
+  if (busqueda) {
+    clear.style.display = 'block';
+    clear.addEventListener('click', function() {
+      buscador.value = '';
+      clear.style.display = 'none';
+      buscador.dispatchEvent(new KeyboardEvent('keyup'));
     });
-  } else { // Si no hay nada escrito en el buscador
-    clear.style.display = 'none'; // Ocultar la x
+  } else {
+    clear.style.display = 'none';
   }
+
   const filas = document.querySelectorAll('.dirlistertable tr.d');
   let juegosNuevos = [];
   let otrosJuegos = [];
   filas.forEach(function(fila) {
-    const juego = fila.querySelector('td:nth-child(2)').textContent.toLowerCase();
+    // Limpiar el texto del juego para omitir el texto entre corchetes
+    const juego = fila.querySelector('td:nth-child(2)').textContent.toLowerCase().replace(/\[.*?\]/g, '').trim();
     if (busqueda === '') {
-      if (fila.querySelector('td:nth-child(2) img.new')) {
+      if (fila.querySelector('td:nth-child(2) div.new')) {
         juegosNuevos.push(fila);
       } else {
         otrosJuegos.push(fila);
       }
     } else if (juego.indexOf(busqueda) !== -1) {
-      if (fila.querySelector('td:nth-child(2) img.new')) {
+      if (fila.querySelector('td:nth-child(2) div.new')) {
         juegosNuevos.push(fila);
       } else {
         otrosJuegos.push(fila);
@@ -34,6 +36,8 @@ buscador.addEventListener('keyup', function() {
       fila.style.display = 'none';
     }
   });
+  // ... (el resto de tu código para ordenar y mostrar las filas) ...
+
   juegosNuevos.sort((a, b) => a.querySelector('td:nth-child(2)').textContent.localeCompare(b.querySelector('td:nth-child(2)').textContent));
   otrosJuegos.sort((a, b) => a.querySelector('td:nth-child(2)').textContent.localeCompare(b.querySelector('td:nth-child(2)').textContent));
   filas.forEach(fila => fila.style.display = 'none');
@@ -48,8 +52,8 @@ function ordenarYEnumerarJuegos() {
   const filas = document.querySelectorAll('.dirlistertable tr.d');
   let juegos = Array.from(filas);
   juegos.sort((a, b) => {
-    const esNuevoA = a.querySelector('td:nth-child(2) img.new') !== null;
-    const esNuevoB = b.querySelector('td:nth-child(2) img.new') !== null;
+    const esNuevoA = a.querySelector('td:nth-child(2) div.new') !== null;
+    const esNuevoB = b.querySelector('td:nth-child(2) div.new') !== null;
     if (esNuevoA && !esNuevoB) {
       return -1;
     } else if (!esNuevoA && esNuevoB) {
@@ -95,8 +99,8 @@ function ordenarPorImagenNew() {
   const filas = document.querySelectorAll('.dirlistertable tr.d');
   let juegos = Array.from(filas);
   juegos.sort((a, b) => {
-    const esNuevoA = a.querySelector('td:nth-child(2) img.new') !== null;
-    const esNuevoB = b.querySelector('td:nth-child(2) img.new') !== null;
+    const esNuevoA = a.querySelector('td:nth-child(2) div.new') !== null;
+    const esNuevoB = b.querySelector('td:nth-child(2) div.new') !== null;
     if (esNuevoA && !esNuevoB) {
       return -1;
     } else if (!esNuevoA && esNuevoB) {
@@ -228,31 +232,32 @@ viewOrderButton.addEventListener('click', function() {
   const tbody = document.createElement('tbody');
   table.appendChild(tbody);
 
-  // Ordenar los juegos seleccionados alfabéticamente
-  const sortedGames = selectedGames.slice().sort();
+  // Agregar cada juego seleccionado al popup en el orden en que fueron seleccionados
+  selectedGames.forEach(function(gameName) {
+    const gameRow = Array.from(addGameButtons).find(function(button) {
+      return button.closest('tr').querySelector('td:nth-child(2)').textContent.trim() === gameName;
+    }).closest('tr');
 
-  // Agregar cada juego seleccionado a la tabla
-sortedGames.forEach(function(gameName, index) {
-  const gameRow = Array.from(addGameButtons).find(function(button) {
-    return button.closest('tr').querySelector('td:nth-child(2)').textContent === gameName;
-  }).closest('tr');
+    const row = document.createElement('tr');
+    tbody.appendChild(row);
 
-  const row = document.createElement('tr');
-  tbody.appendChild(row);
+    // Icono del juego
+    const iconCell = document.createElement('td');
+    row.appendChild(iconCell);
+    const icon = gameRow.querySelector('td:nth-child(2) img').cloneNode(true);
+    icon.style.display = 'inline'; // Asegurarse de que el icono se muestre
+    icon.src = icon.dataset.src; // Establecer el atributo src del icono para el popup
+    iconCell.appendChild(icon);
 
-  // Icono del juego
-  const iconCell = document.createElement('td');
-  row.appendChild(iconCell);
-  const icon = gameRow.querySelector('td:nth-child(2) img').cloneNode(true);
-  icon.style.display = 'inline'; // Asegurarse de que el icono se muestre
-  icon.src = icon.dataset.src; // Establecer el atributo src del icono para el popup
-  iconCell.appendChild(icon);
+    // Obtener el nombre del juego excluyendo los elementos 'new' y 'online'
+    const nameCellContent = gameRow.querySelector('td:nth-child(2)').cloneNode(true);
+    Array.from(nameCellContent.querySelectorAll('.new, .online')).forEach(el => el.remove());
+    const cleanGameName = nameCellContent.textContent.replace(/\[.*?\]/g, '').trim();
 
     // Nombre del juego
     const nameCell = document.createElement('td');
     row.appendChild(nameCell);
-    nameCell.textContent = gameName;
-    
+    nameCell.textContent = cleanGameName;
 
     // Peso del juego
     const weightCell = document.createElement('td');
@@ -265,32 +270,32 @@ sortedGames.forEach(function(gameName, index) {
     priceCell.textContent = gameRow.querySelector('td:nth-child(4)').textContent;
   });
 
-  //Mostrar Tamaño total de los juegos seleccionados en el popup
-  let tamanoTotal = 0;
+    //Mostrar Tamaño total de los juegos seleccionados en el popup
+    let tamanoTotal = 0;
+
+    selectedGames.forEach(function(gameName) {
+      const row = Array.from(addGameButtons).find(function(button) {
+        return button.closest('tr').querySelector('td:nth-child(2)').textContent === gameName;
+      }).closest('tr');
+      
+      const tamano = parseFloat(row.querySelector('td:nth-child(3)').textContent);
+      const costo = row.querySelector('td:nth-child(4)').textContent;
   
-  selectedGames.forEach(function(gameName) {
-    const row = Array.from(addGameButtons).find(function(button) {
-      return button.closest('tr').querySelector('td:nth-child(2)').textContent === gameName;
-    }).closest('tr');
-    
-    const tamano = parseFloat(row.querySelector('td:nth-child(3)').textContent);
-    const costo = row.querySelector('td:nth-child(4)').textContent;
-
-    total += parseInt(costo);
-    tamanoTotal += tamano;
-  });
-  document.querySelector('#total2').textContent = tamanoTotal + 'Gb';
-
-  ///Mostrar Costo total de los juegos seleccionados en el popup
-  let totalCosto = 0;
-  selectedGames.forEach(function(gameName) {
-    const gameRow = Array.from(addGameButtons).find(function(button) {
-      return button.closest('tr').querySelector('td:nth-child(2)').textContent === gameName;
-    }).closest('tr');
-    const gameCost = gameRow.querySelector('td:nth-child(4)').textContent;
-    totalCosto += parseInt(gameCost.replace('Mn', ''));
-  });
-  document.querySelector('#total3').textContent = totalCosto + 'Mn';
+      total += parseInt(costo);
+      tamanoTotal += tamano;
+    });
+    document.querySelector('#total2').textContent = tamanoTotal + 'Gb';
+  
+    ///Mostrar Costo total de los juegos seleccionados en el popup
+    let totalCosto = 0;
+    selectedGames.forEach(function(gameName) {
+      const gameRow = Array.from(addGameButtons).find(function(button) {
+        return button.closest('tr').querySelector('td:nth-child(2)').textContent === gameName;
+      }).closest('tr');
+      const gameCost = gameRow.querySelector('td:nth-child(4)').textContent;
+      totalCosto += parseInt(gameCost.replace('Mn', ''));
+    });
+    document.querySelector('#total3').textContent = totalCosto + 'Mn';
 
   // Mostrar el popup
   document.querySelector('#popup').style.display = 'block';
@@ -313,19 +318,24 @@ comprar.addEventListener('click', function() {
   
   selectedGames.forEach(function(gameName) {
     const row = Array.from(addGameButtons).find(function(button) {
-      return button.closest('tr').querySelector('td:nth-child(2)').textContent === gameName;
+      return button.closest('tr').querySelector('td:nth-child(2)').textContent.trim() === gameName;
     }).closest('tr');
     
-    const tamano = parseFloat(row.querySelector('td:nth-child(3)').textContent);
-    const costo = row.querySelector('td:nth-child(4)').textContent;
+    // Limpiar el nombre del juego para omitir el texto entre corchetes y las palabras 'new' y 'online'
+    const nameCellContent = row.querySelector('td:nth-child(2)').cloneNode(true);
+    Array.from(nameCellContent.querySelectorAll('.new, .online')).forEach(el => el.remove());
+    const cleanGameName = nameCellContent.textContent.replace(/\[.*?\]/g, '').trim();
+
+    const tamano = parseFloat(row.querySelector('td:nth-child(3)').textContent.replace(/[^0-9.]/g, ''));
+    const costo = parseFloat(row.querySelector('td:nth-child(4)').textContent.replace(/[^0-9.]/g, ''));
     
-    mensaje += gameName + ' - ' + costo + '\n\n';
-    total += parseInt(costo);
+    mensaje += cleanGameName + ' - ' + costo + 'Mn\n\n';
+    total += costo;
     tamanoTotal += tamano;
   });
   
   mensaje += '*Total de tamaño*: ' + tamanoTotal.toFixed(2) + ' Gb\n';
-  mensaje += '*Total a pagar*: ' + total + 'Mn\n';
+  mensaje += '*Total a pagar*: ' + total.toFixed(2) + 'Mn\n';
   
   window.open('https://wa.me/+5359030388?text=' + encodeURIComponent(mensaje));
 });
