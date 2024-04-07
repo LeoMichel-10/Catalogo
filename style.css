@@ -8,7 +8,7 @@ body {
 @media screen and (max-width: 600px) {
     /* Nuevos estilos */
     body{
-        font-size:24px; /* Aumentar tamaño de letra */
+        font-size:18px; /* Aumentar tamaño de letra */
     }
     table.dirlistertable thead.header-1 tr.gradient-row th{
         position: sticky;
@@ -127,10 +127,6 @@ table.dirlistertable thead.header-2 th,
 table.dirlistertable thead.header-1 .gradient-row th{
 	text-align:center;
 	font-size:28px;
-}
-img.full-width{
-	width:100%;
-	height:auto;
 }
 /*tamaño de letra de juegos*/
 table.dirlistertable tr.d td{
@@ -343,4 +339,9 @@ left: 28px;
 @keyframes onlineText {
     0%, 100% { background-color: #00336C; }
     50% { background-color: #18CCDD; }
+}
+
+#map {
+	height: 800px;
+	width: 100%;
 }
