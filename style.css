@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url(./PS_icons_background.jfif);
+    background-image: url(./img_ps_icons_background.jfif);
 }
 
 @media screen and (max-width: 600px) {
@@ -14,7 +14,7 @@ body {
         position: sticky;
         top: 60px; /* Aumentar el valor de top */
         z-index: 2;
-     }
+    }
     table.dirlistertable thead.header-1 tr.colnames th{
         position: sticky;
         top: 180px; /* Aumentar el valor de top */
@@ -81,62 +81,53 @@ table.dirlistertable th {
     50% { opacity: 1; } /* La opacidad es 1 a la mitad */
     100% { opacity: 0.8; } /* La opacidad vuelve a ser 0.8 al final */
 }
-  
-  
+
+.banner {
+    color: white;
+    background-color: #00336C;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* Barra de Busqueda */
+table.dirlistertable thead tr:nth-child(1) td {
+    background-color: #00336C;
+}
+
+/* Juegos | Ver pedido */
+table.dirlistertable thead.header-1 .gradient-row th {
+    background-image: linear-gradient(to bottom, #00336C, #18CCDD);
+}
+
+/* 0Mn | # / Nombre / Iconos / Tamaño (Gb) / Costo (Mn) */
 table.dirlistertable thead.header-1 th {
     background-color: #18CCDD;
 }
-table.dirlistertable thead tr:nth-child(1) td {
-    background-image: linear-gradient(to right, #00336C, #18CCDD);
-}
-table.dirlistertable thead.header-2 th {
-    background-image: linear-gradient(to right, #00336C, #18CCDD);
-}
-table.dirlistertable thead.header-1 .gradient-row th:not(.comprar-celda) {
-    background-image: linear-gradient(to right, #00336C, #18CCDD);
-}
-img {
-    display:block;
-	max-width:100%; /* Ajustar imagen al ancho de la pantalla */
-	height:auto; /* Mantener proporción */
-}
-.banner {
-    display:block;
-	max-width:100%; /* Ajustar imagen al ancho maximo de la pantalla */
-    min-width:100%; /* Ajustar imagen al ancho minimo de la pantalla */
-	height:auto; /* Mantener proporción */
-}
+
+/* Barra de busqueda fija */
 table.dirlistertable thead.header-1 tr:nth-child(1) td{
-   position: sticky;
-   top: 0px;
-   z-index: 1;
-}
-table.dirlistertable thead.header-1 tr.gradient-row th{
-   position: sticky;
-   top: 44px;
-   z-index: 1;
-}
-table.dirlistertable thead.header-1 tr.colnames th{
-   position: sticky;
-   top: 88px;
-   z-index: 1;
+    position: sticky;
+    top: 0px;
+    z-index: 1;
 }
 
 /*tamaño de letra JUEGOS PS4*/
 table.dirlistertable thead.header-2 th,
 table.dirlistertable thead.header-1 .gradient-row th{
 	text-align:center;
-	font-size:28px;
+	font-size:35px;
 }
-/*tamaño de letra de juegos*/
-table.dirlistertable tr.d td{
-	font-size:25px;
-    
-}
+
 /*Tamaño de letra de Nombre Juegos Tamaño Costo*/
 table.dirlistertable thead.header-1 .colnames th{
-	font-size:28px;
+	font-size:35px;
 }
+
+/*tamaño de letra de juegos*/
+table.dirlistertable tr.d td{
+	font-size: 32px;
+}
+
 table.dirlistertable tr.d td:nth-child(1) {
 	cursor: pointer;
 }
@@ -149,9 +140,7 @@ table.dirlistertable tr.d td:nth-child(3) {
 table.dirlistertable tr.d td:nth-child(4) {
 	cursor: pointer;
 }
-#comprar-th {
-    background-color: #17C5D8 !important;
-}
+
 #comprar {
     background-color: #00336C;
     color: white;
@@ -159,17 +148,15 @@ table.dirlistertable tr.d td:nth-child(4) {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-  }
+}
 #comprar:hover {
     background-color: #002753;
-  }
+}
 #comprar:disabled {
     opacity: 0.6;
     cursor: not-allowed;
-  }
-.comprar-celda {
-    background-color: #17C5D8;
 }
+
 #comprar {
     font-size: 16px;
     padding: 10px 7px;
@@ -227,13 +214,13 @@ cursor: pointer;
     transition: 0.3s;
 }
 #btn-switch{
-   display: none; 
+    display: none; 
 }
 #btn-switch:checked~ .lbl-switch{
-background: #00336C;
+    background: #00336C;
 }
 #btn-switch:checked~ .lbl-switch:after{
-left: 28px;
+    left: 28px;
 }
 
 
@@ -318,11 +305,11 @@ left: 28px;
     background-color: #F77C22;
     padding: 0.001vh 0.003vw;
     animation: newText 1.5s infinite;
-  }
-  @keyframes newText {
+}
+@keyframes newText {
     0%, 100% { background-color: #F77C22; }
     50% { background-color: #E8410E; }
-  }
+}
 
 .online {
     width: 50px;
@@ -339,4 +326,9 @@ left: 28px;
 @keyframes onlineText {
     0%, 100% { background-color: #00336C; }
     50% { background-color: #18CCDD; }
+}
+
+/* Footer */
+table.dirlistertable thead.header-2 th {
+    background-image: linear-gradient(to right, #00336C, #18CCDD);
 }
