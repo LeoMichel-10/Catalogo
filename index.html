@@ -5,21 +5,15 @@
 <link rel="icon" href="img_icon.ico">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-<title>Catálogo PS4 CopyStation</title>
+<title>Catálogo PS4 | CopyStation</title>
 </head>
 
 <body>
-<img class="banner" src="./img_baner.jpg" alt="">
+<div class="banner"><img src="/img_copystation_icon.png" alt=""><h1>Catálogo PS4 | CopyStation</h1></div>
 <table class="dirlistertable">
 <thead class="header-1">
   <tr><td colspan="4"><input type="text" name="buscador" id="buscador" placeholder="Buscar..."><span id="clear">Borrar</span></td></tr>  
-  <tr class="gradient-row">
-    <th colspan="2">Juegos PS4</th>
-
-    <th colspan="2" class="comprar-celda" id="comprar-th">
-      <button id="ver-pedido">Ver pedido</button>
-    </th>    
-    
+  <tr class="gradient-row"><th colspan="2">Juegos</th><th colspan="2" class="comprar-celda" id="comprar-th"><button id="ver-pedido">Ver pedido</button></th></tr>
   <tr class="colnames"><th><span id="total">0Mn</span></th><th>  #  / Nombre /  Iconos <input type="checkbox" id="btn-switch"><label for="btn-switch" class="lbl-switch"></label></th><th>Tamaño (Gb)</th><th>Costo (Mn)</th></tr>
 </thead>
 
@@ -353,7 +347,6 @@
   <tr class="d"><td><button class="add-game">+</button></td><td><img class="icon" data-src="./icon_games/Firewatch game.png">Firewatch</td><td>1.887.585.295</td><td>50Mn</td>
   <tr class="d"><td><button class="add-game">+</button></td><td><img class="icon" data-src="./icon_games/Call of Duty Advanced Warfare game.png">Call of Duty Advanced Warfare Atlas Limited Edition</td><td>59.173.502.976</td><td>100Mn</td>
 
-
   <tr class="d"><td><button class="add-game">+</button></td><td><img class="icon" data-src="./icon_games/EA SPORTS FC24 game.png">EA SPORTS FC24 <br>(FIFA 24)<div class="new">new</div></td><td>48.396.601.092</td><td>100Mn</td>
   <tr class="d"><td><button class="add-game">+</button></td><td><img class="icon" data-src="./icon_games/Assassin's Creed Mirage game.png">Assassin’s Creed Mirage<div class="new">new</div></td><td>29.638.258.415</td><td>100Mn</td>
   <tr class="d"><td><button class="add-game">+</button></td><td><img class="icon" data-src="./icon_games/NBA 2K24 game.png">NBA 2K24<div class="new">new</div></td><td>128.222.851.362</td><td>150Mn</td>
@@ -370,14 +363,9 @@
   <tr class="d"><td><button class="add-game">+</button></td><td><img class="icon" data-src="./icon_games/Armored Core VI Fires of Rubicon game.png">Armored Core VI Fires of Rubicon<div class="new">new</div></td><td>54.195.760.822</td><td>100Mn</td>
   <tr class="d"><td><button class="add-game">+</button></td><td><img class="icon" data-src="./icon_games/METAL GEAR SOLID 3 Snake Eater - Master Collection Version game.png">METAL GEAR SOLID 3 Snake Eater - Master Collection Version<div class="new">new</div></td><td>16.969.440.430</td><td>50Mn</td>
   <tr class="d"><td><button class="add-game">+</button></td><td><img class="icon" data-src="./icon_games/MLB The Show 23 game.png">MLB The Show 23<div class="new">new</div></td><td>66.303.308.724</td><td>100Mn</td>
-
-
-
-
-
 </div>
 
-<!-- COMENTARIO -->
+<!-- Popup -->
 
 <div id="popup" style="display: none; position: fixed; max-width: 550px; max-height: 90%; background: white; padding: 10px; overflow: auto;">
   <button id="close-popup" style="position: absolute; right: 10px;">X</button>
@@ -385,9 +373,10 @@
   <ul id="selected-games"></ul>
   <h3>Peso Aproximado: <span id="total2">0Gb</span></h3>
   <h3>Total a pagar: <span id="total3">0Mn</span></h3>
-  <h1></h1>
   <button id="comprar" disabled>Hacer pedido</button>
 </div>
+
+<!-- Contactenos -->
 
 <thead class="header-2">
   <tr><th colspan="4">Catálogo actualizado el 08/04/2024</th></tr>
@@ -397,6 +386,9 @@
   <tr><th colspan="4">Dirección: <br> Calle E # 12 entre Cupey y 3ra. Reparto Agramonte. Camagüey</th></tr>
 </thead>
 </table>
+
+<!-- Mapa -->
+
 <div id="mi_mapa" style="width: 100%; height: 800px;"></div>
 <a id="back-to-top" href="#top">
   <img class="back-to-top" src="./img_back_to_top.png" alt="Volver al principio">
@@ -405,7 +397,7 @@
 <script src="./script.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
-  let map = L.map('mi_mapa').setView([21.39306,-77.93315], 15)
+  let map = L.map('mi_mapa').setView([21.3820,-77.9128], 13)
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
