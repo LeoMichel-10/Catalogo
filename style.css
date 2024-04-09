@@ -253,10 +253,10 @@ cursor: pointer;
 }  
 
 #popup {
+    font-size: 18px;
     display: none;
     position: fixed;
-    max-width: 80%;
-    background: rgba(255, 255, 255, 0.8); /* Cambiar el color de fondo a blanco con una opacidad del 80% para crear un efecto semitransparente */
+    background: white; /* Cambiar el color de fondo a blanco con una opacidad del 80% para crear un efecto semitransparente */
     border: 1px solid #ddd; /* Cambiar el color del borde a un gris claro */
     overflow: auto; /* Permitir el desplazamiento si es necesario, pero ocultar la barra de desplazamiento */
     border-radius: 15px; /* Añadir bordes redondeados */
@@ -268,6 +268,18 @@ cursor: pointer;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+#popup img{
+    width: 90px;
+}
+
+#popup h2{
+    font-size: 20px;
+}
+
+#popup th{
+    font-size: 18px;
 }
 
 #close-popup {
