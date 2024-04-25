@@ -85,6 +85,7 @@ table.dirlistertable th {
 
 .banner {
     color: white;
+    background-color: #310083;
     background-image: url(./img_banner.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
@@ -107,7 +108,7 @@ table.dirlistertable thead th {
     background-color: #310083;
 }
 
-/* Barra de busqueda fija */
+/*Top fijo de Barra de Busqueda*/
 table.dirlistertable thead.header-1 tr:nth-child(1) td{
     position: sticky;
     top: 0px;
@@ -164,14 +165,18 @@ table.dirlistertable tr.d td:nth-child(4) {
     font-size: 16px;
     padding: 10px 7px;
 }
+
+/*Top fijo de Juegos Ver Pedido*/
 table.dirlistertable thead.header-1 tr.gradient-row th{
     position: sticky;
-    top: 45px;
-    z-index: 1; /* Aumentar el valor de z-index */
+    top: 70px;
+    z-index: 1;
 }
+
+/*Top fijo de Nombre Iconos Tamaño Costo*/
 table.dirlistertable thead.header-1 tr.colnames th{
     position: sticky;
-    top: 120px; /* Aumentar el valor de top */
+    top: 140px; 
     z-index: 1;
 }
 #back-to-top {
