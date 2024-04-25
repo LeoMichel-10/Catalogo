@@ -96,12 +96,12 @@ table.dirlistertable thead tr:nth-child(1) td {
 
 /* Juegos | Ver pedido */
 table.dirlistertable thead.header-1 .gradient-row th {
-    background-image: linear-gradient(to bottom, #00336C, #18CCDD);
+    background-color: #00336C;
 }
 
 /* 0Mn | # / Nombre / Iconos / Tamaño (Gb) / Costo (Mn) */
-table.dirlistertable thead.header-1 th {
-    background-color: #18CCDD;
+table.dirlistertable thead th {
+    background-color: #00336C;
 }
 
 /* Barra de busqueda fija */
@@ -223,11 +223,24 @@ cursor: pointer;
     left: 28px;
 }
 
+/* Estilo para los botones "Ver pedido" */
+#ver-pedido{
+    background-color: #18CCDD;
+    color: #333;
+    font-weight: bold;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 24px;
+}
+/* Estilo para los botones "Ver pedido" cuando se pasa el mouse por encima */
+#ver-pedido:hover{
+    background-color: #11a5b3;
+}
 
-
-
-/* Estilo para los botones "+" y "Ver pedido" */
-.add-game, #ver-pedido {
+/* Estilo para los botones "+" */
+.add-game{
     background-color: #00336C;
     color: white;
     padding: 12px 20px;
@@ -237,8 +250,8 @@ cursor: pointer;
     font-size: 24px;
 }
 
-/* Estilo para los botones "+" y "Ver pedido" cuando se pasa el mouse por encima */
-.add-game:hover, #ver-pedido:hover {
+/* Estilo para los botones "+" cuando se pasa el mouse por encima */
+.add-game:hover{
     background-color: #002753;
 }
 
@@ -263,11 +276,14 @@ cursor: pointer;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Añadir sombra para crear un efecto de relieve */
     z-index: 3; /*Mostrar popup por encima de todos los elementos*/
 
-
     /* Centrar el popup */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.center{
+    text-align: center;
 }
 
 #popup img{
