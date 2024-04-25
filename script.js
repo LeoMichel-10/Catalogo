@@ -174,7 +174,7 @@ addGameButtons.forEach(function(button) {
       
       // Cambiar el texto del botón a "+" y su color a azul oscuro
       button.textContent = '+';
-      button.style.backgroundColor = '#00336C';
+      button.style.backgroundColor = '#310083';
     } else {
       // Si el juego no está seleccionado, agregarlo a la lista de juegos seleccionados
       selectedGames.push(gameName);
