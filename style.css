@@ -377,5 +377,5 @@ legend{
 
 /* Footer */
 table.dirlistertable thead.header-2 th {
-    background-image: linear-gradient(to right, #00336C, #18CCDD);
+    background-color: #00336C;
 }
