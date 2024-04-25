@@ -55,7 +55,8 @@ table.dirlistertable th {
     font-size: 1.17em;
 	color:white; /* Cambiar color de texto */
 	font-size:24px; /* Aumentar tamaño de letra */
-    padding-left: 5%;
+    margin: 10px 0;
+    padding: 10px 5%;
     background-image: url(./img_lupa.png);
     background-repeat: no-repeat;
     background-size: 25px;
@@ -84,24 +85,27 @@ table.dirlistertable th {
 
 .banner {
     color: white;
-    background-color: #00336C;
+    background-color: #310083;
+    background-image: url(/img_banner.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
     text-align: center;
     padding: 10px 0;
 }
 
 /* Barra de Busqueda */
 table.dirlistertable thead tr:nth-child(1) td {
-    background-color: #00336C;
+    background-color: #310083;
 }
 
 /* Juegos | Ver pedido */
 table.dirlistertable thead.header-1 .gradient-row th {
-    background-color: #00336C;
+    background-color: #310083;
 }
 
 /* 0Mn | # / Nombre / Iconos / Tamaño (Gb) / Costo (Mn) */
 table.dirlistertable thead th {
-    background-color: #00336C;
+    background-color: #310083;
 }
 
 /* Barra de busqueda fija */
@@ -142,7 +146,7 @@ table.dirlistertable tr.d td:nth-child(4) {
 }
 
 #comprar {
-    background-color: #00336C;
+    background-color: #310083;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -150,7 +154,7 @@ table.dirlistertable tr.d td:nth-child(4) {
     cursor: pointer;
 }
 #comprar:hover {
-    background-color: #002753;
+    background-color: #22015c;
 }
 #comprar:disabled {
     opacity: 0.6;
@@ -225,7 +229,7 @@ cursor: pointer;
 
 /* Estilo para los botones "Ver pedido" */
 #ver-pedido{
-    background-color: #18CCDD;
+    background-image: linear-gradient(to bottom, #FC1948, #FFB300);
     color: #333;
     font-weight: bold;
     padding: 12px 20px;
@@ -241,7 +245,7 @@ cursor: pointer;
 
 /* Estilo para los botones "+" */
 .add-game{
-    background-color: #00336C;
+    background-color: #310083;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -252,7 +256,7 @@ cursor: pointer;
 
 /* Estilo para los botones "+" cuando se pasa el mouse por encima */
 .add-game:hover{
-    background-color: #002753;
+    background-color: #280269;
 }
 
 /* Estilo para los botones "+" y "Ver pedido" cuando están deshabilitados */
@@ -319,7 +323,7 @@ cursor: pointer;
 }
 
 #selected-games th {
-    background-color: #00336C;
+    background-color: #310083;
     color: white;
 }
 
@@ -352,7 +356,7 @@ cursor: pointer;
 }
 
 @keyframes onlineText {
-    0%, 100% { background-color: #00336C; }
+    0%, 100% { background-color: #310083; }
     50% { background-color: #18CCDD; }
 }
 
@@ -377,5 +381,5 @@ legend{
 
 /* Footer */
 table.dirlistertable thead.header-2 th {
-    background-color: #00336C;
+    background-image: linear-gradient(to right, #310083, #552BD3);
 }
