@@ -217,7 +217,7 @@ cursor: pointer;
     display: none; 
 }
 #btn-switch:checked~ .lbl-switch{
-    background: #00336C;
+    background: #18CCDD;
 }
 #btn-switch:checked~ .lbl-switch:after{
     left: 28px;
