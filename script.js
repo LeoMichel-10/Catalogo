@@ -14,7 +14,7 @@ buscador.addEventListener('keyup', function() {
     clear.style.display = 'none';
   }
 
-  const filas = document.querySelectorAll('.dirlistertable tr.d');
+  const filas = document.querySelectorAll('.tabla tr.d');
   let juegosNuevos = [];
   let otrosJuegos = [];
   filas.forEach(function(fila) {
@@ -36,20 +36,19 @@ buscador.addEventListener('keyup', function() {
       fila.style.display = 'none';
     }
   });
-  // ... (el resto de tu código para ordenar y mostrar las filas) ...
 
   juegosNuevos.sort((a, b) => a.querySelector('td:nth-child(2)').textContent.localeCompare(b.querySelector('td:nth-child(2)').textContent));
   otrosJuegos.sort((a, b) => a.querySelector('td:nth-child(2)').textContent.localeCompare(b.querySelector('td:nth-child(2)').textContent));
   filas.forEach(fila => fila.style.display = 'none');
   juegosNuevos.concat(otrosJuegos).forEach(fila => fila.style.display = '');
-  const tbody = document.querySelector('.dirlistertable tbody');
+  const tbody = document.querySelector('.tabla tbody');
   juegosNuevos.concat(otrosJuegos).forEach(fila => tbody.appendChild(fila));
   enumerarJuegos();
 });
 
 
 function ordenarYEnumerarJuegos() {
-  const filas = document.querySelectorAll('.dirlistertable tr.d');
+  const filas = document.querySelectorAll('.tabla tr.d');
   let juegos = Array.from(filas);
   juegos.sort((a, b) => {
     const esNuevoA = a.querySelector('td:nth-child(2) div.new') !== null;
@@ -82,7 +81,7 @@ function ordenarYEnumerarJuegos() {
     const numero = (index + 1).toString().padStart(3, '0');
     span.textContent = numero + '. ';
   });
-  const tbody = document.querySelector('.dirlistertable tbody');
+  const tbody = document.querySelector('.tabla tbody');
   juegos.forEach(fila => tbody.appendChild(fila));
 }
 
@@ -96,7 +95,7 @@ window.addEventListener('load', function() {
 
 
 function ordenarPorImagenNew() {
-  const filas = document.querySelectorAll('.dirlistertable tr.d');
+  const filas = document.querySelectorAll('.tabla tr.d');
   let juegos = Array.from(filas);
   juegos.sort((a, b) => {
     const esNuevoA = a.querySelector('td:nth-child(2) div.new') !== null;
@@ -109,7 +108,7 @@ function ordenarPorImagenNew() {
       return 0;
     }
   });
-  const tbody = document.querySelector('.dirlistertable tbody');
+  const tbody = document.querySelector('.tabla tbody');
   juegos.forEach(fila => tbody.appendChild(fila));
 }
 
@@ -341,7 +340,7 @@ comprar.addEventListener('click', function() {
 });
 
 // Obtener todas las filas de la tabla
-const rows = document.querySelectorAll('.dirlistertable tr.d');
+const rows = document.querySelectorAll('.tabla tr.d');
 
 // Agregar un controlador de eventos a cada fila
 rows.forEach(function(row) {
