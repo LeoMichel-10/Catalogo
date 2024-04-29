@@ -1,7 +1,10 @@
-body {
-    font-family: Arial, sans-serif;
+*{
     margin: 0;
     padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
     background-image: url(./img_ps_icons_background.jfif);
 }
 
@@ -10,39 +13,39 @@ body {
     body{
         font-size:18px; /* Aumentar tamaño de letra */
     }
-    table.dirlistertable thead.header-1 tr.gradient-row th{
+    table.tabla thead.header-1 tr.gradient-row th{
         position: sticky;
         top: 60px; /* Aumentar el valor de top */
         z-index: 2;
     }
-    table.dirlistertable thead.header-1 tr.colnames th{
+    table.tabla thead.header-1 tr.colnames th{
         position: sticky;
         top: 180px; /* Aumentar el valor de top */
         z-index: 1;
     }
-    table.dirlistertable tr.d td{
+    table.tabla tr.d td{
         font-size:28px; /* Aumentar tamaño de letra */
     }
-    table.dirlistertable, table.dirlistertable thead, table.dirlistertable tbody, table.dirlistertable th, table.dirlistertable td, table.dirlistertable tr {
+    table.tabla, table.tabla thead, table.tabla tbody, table.tabla th, table.tabla td, table.tabla tr {
         display:block;
     }
     
 }
 
-table.dirlistertable {
+table.tabla {
     border-collapse: collapse;
     width: 100%;
 }
-table.dirlistertable td, table.dirlistertable th {
+table.tabla td, table.tabla th {
     padding: 8px;
 }
-table.dirlistertable tr:nth-child(even) {
+table.tabla tr:nth-child(even) {
     background-color: #f2f2f2;
 }
-table.dirlistertable tr:hover {
+table.tabla tr:hover {
     background-color: #ddd;
 }
-table.dirlistertable th {
+table.tabla th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
@@ -94,54 +97,54 @@ table.dirlistertable th {
 }
 
 /* Barra de Busqueda */
-table.dirlistertable thead tr:nth-child(1) td {
+table.tabla thead tr:nth-child(1) td {
     background-color: #310083;
 }
 
 /* Juegos | Ver pedido */
-table.dirlistertable thead.header-1 .gradient-row th {
+table.tabla thead.header-1 .gradient-row th {
     background-color: #310083;
 }
 
 /* 0Mn | # / Nombre / Iconos / Tamaño (Gb) / Costo (Mn) */
-table.dirlistertable thead th {
+table.tabla thead th {
     background-color: #310083;
 }
 
 /*Top fijo de Barra de Busqueda*/
-table.dirlistertable thead.header-1 tr:nth-child(1) td{
+table.tabla thead.header-1 tr:nth-child(1) td{
     position: sticky;
     top: 0px;
     z-index: 1;
 }
 
 /*tamaño de letra JUEGOS PS4*/
-table.dirlistertable thead.header-2 th,
-table.dirlistertable thead.header-1 .gradient-row th{
+table.tabla thead.header-2 th,
+table.tabla thead.header-1 .gradient-row th{
 	text-align:center;
 	font-size:35px;
 }
 
 /*Tamaño de letra de Nombre Juegos Tamaño Costo*/
-table.dirlistertable thead.header-1 .colnames th{
+table.tabla thead.header-1 .colnames th{
 	font-size:35px;
 }
 
 /*tamaño de letra de juegos*/
-table.dirlistertable tr.d td{
+table.tabla tr.d td{
 	font-size: 32px;
 }
 
-table.dirlistertable tr.d td:nth-child(1) {
+table.tabla tr.d td:nth-child(1) {
 	cursor: pointer;
 }
-table.dirlistertable tr.d td:nth-child(2) {
+table.tabla tr.d td:nth-child(2) {
 	cursor: pointer;
 }
-table.dirlistertable tr.d td:nth-child(3) {
+table.tabla tr.d td:nth-child(3) {
 	cursor: pointer;
 }
-table.dirlistertable tr.d td:nth-child(4) {
+table.tabla tr.d td:nth-child(4) {
 	cursor: pointer;
 }
 
@@ -167,14 +170,14 @@ table.dirlistertable tr.d td:nth-child(4) {
 }
 
 /*Top fijo de Juegos Ver Pedido*/
-table.dirlistertable thead.header-1 tr.gradient-row th{
+table.tabla thead.header-1 tr.gradient-row th{
     position: sticky;
     top: 70px;
     z-index: 1;
 }
 
 /*Top fijo de Nombre Iconos Tamaño Costo*/
-table.dirlistertable thead.header-1 tr.colnames th{
+table.tabla thead.header-1 tr.colnames th{
     position: sticky;
     top: 140px; 
     z-index: 1;
@@ -224,6 +227,8 @@ cursor: pointer;
 #btn-switch{
     display: none; 
 }
+
+/* Color activo del switch */
 #btn-switch:checked~ .lbl-switch{
     background: #18CCDD;
 }
@@ -242,9 +247,14 @@ cursor: pointer;
     cursor: pointer;
     font-size: 24px;
 }
+
+#ver-pedido:active{
+    background-image: linear-gradient(to bottom, #ff0033, #FFB300);
+}
+
 /* Estilo para los botones "Ver pedido" cuando se pasa el mouse por encima */
 #ver-pedido:hover{
-    background-color: #11a5b3;
+    box-shadow: 0px 0px 15px black;
 }
 
 /* Estilo para los botones "+" */
@@ -267,6 +277,7 @@ cursor: pointer;
 .add-game:disabled, #ver-pedido:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+    box-shadow: none;
 }
 
 #selected-games li {
@@ -384,6 +395,6 @@ legend{
 }
 
 /* Footer */
-table.dirlistertable thead.header-2 th {
+table.tabla thead.header-2 th {
     background-image: linear-gradient(to right, #310083, #552BD3);
 }
